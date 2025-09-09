@@ -1,0 +1,95 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Registration Form</title>
+</head>
+<body style="background-image:url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLUqepe1SwesunukCnSwDrq2gqIeSzUWHQZA&s');background-size:cover;background-repeat:no -repeat;">
+<div class="box">
+<h1>Registartion Form</h1>
+<form onsubmit="return validateForm()">
+<div class="s1"><input type="text" id="name" placeholder="Enter Name"><br><br></div>
+<div id="nameError" class="error"></div>
+<div class="s1"><input type="email"  id="email" placeholder="Enter E-mail"><br><br></div>
+<div id="emailError" class="error"></div>
+<div class="s1"><input type="number" id="number" placeholder="Enter Phonenumber"><br><br></div>
+<div id="numberError" class="error"></div>
+<div class="s1"><input type="password" id="password" placeholder="Enter password"><br><br></div>
+<div id="passwordError" class="error"></div>
+<div class="s1"><input type="password" id="confirmPassword" placeholder="Confirm password"><br><br></div>
+<div id="confirmPasswordError" class="error"></div>
+<div class="s1"><button style="background-color:red; color:"white;"> Register</button></div>
+
+</div>
+<style>
+.box{
+background-color:white;
+width:350px;
+height:350px;
+border-radius:5%;
+opacity:0.9;
+margin-left:550px;
+margin-top:150px;
+text-align:center;
+trasition:transform 0.3s ease,background-color:0.3s ease;
+cursor:pointer;
+}
+.s1:hover{
+transform:scale(1.2);
+}
+.s2:hover{
+transform:scale(1.2);
+}
+.s3:hover{
+transform:scale(1.2);
+}
+.s4:hover{
+transform:scale(1.2);
+}
+.s5:hover{
+transform:scale(1.2);
+}
+input:hover{
+background:linear-gradient(burlywood,silver);
+color:black;
+}
+</style>
+<script>
+function validateForm(){
+let isValid=true;
+document.querySelectorAll(".error").forEach(e=> e.innerText="");
+let name=document.getElementById("name").value.trim();
+if(name===""){
+document.getElementById("nameError").innerText="Name is Required";
+isValid=false;
+}
+let email=document.getElementById("email").value.trim();
+let emailPattern=/^[6]+@[^]+\.[a-z]{2,3}$/;
+if(!email.match(emailPattern)){
+document.getElementById("emailError").innerText="Enter a valid email";
+isValid=false;
+}
+let password=document.getElementById("password").value;
+if(password.length<6){
+document.getElementById("passwordError").innerText="Password must be atleast 6 characters";
+isValid=false;
+}
+let confirmPassword=document.getElementById("CconfirmPassword").value;
+if(confirmPassword !==password || confirmPassword ===""){
+document.getElementById("confirmPasswordError").innerText="Passwords do not match";
+isValid=false;
+}
+let phone=document.getElementById("phone").value.trim();
+let phonePattern=/^[0-9]{10}$/;
+if(!phone.match(phonePattern)){
+document.getElementById("phoneError").innerText="Enter 10 digit phone number";
+isValid=false;
+}
+if(isValid){
+alert("Registration Successfull!");
+}
+return isValid;
+}
+</script>
+
+</body>
+</html>
